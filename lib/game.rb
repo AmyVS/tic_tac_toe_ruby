@@ -20,7 +20,7 @@ class Game
           @board.all_spaces[x_coord][1].is_marked_by.symbol) &&
          (@board.all_spaces[x_coord][1].is_marked_by.symbol ==
           @board.all_spaces[x_coord][2].is_marked_by.symbol)
-       return [true, "win", "row"+x_coord.to_s, @board.all_spaces[x_coord][2].is_marked_by.symbol]
+       return [true, "win", "row "+x_coord.to_s, @board.all_spaces[x_coord][2].is_marked_by.symbol]
       end
     end
 
@@ -32,7 +32,7 @@ class Game
           @board.all_spaces[1][y_coord].is_marked_by.symbol) &&
          (@board.all_spaces[1][y_coord].is_marked_by.symbol ==
           @board.all_spaces[2][y_coord].is_marked_by.symbol)
-        return [true, "win", "col"+y_coord.to_s, @board.all_spaces[2][y_coord].is_marked_by.symbol]
+        return [true, "win", "col "+y_coord.to_s, @board.all_spaces[2][y_coord].is_marked_by.symbol]
       end
     end
 
@@ -43,7 +43,7 @@ class Game
           @board.all_spaces[1][1].is_marked_by.symbol) &&
          (@board.all_spaces[1][1].is_marked_by.symbol ==
           @board.all_spaces[0][2].is_marked_by.symbol)
-      return [true, "win", "diagadd", @board.all_spaces[0][2].is_marked_by.symbol]
+      return [true, "win", "diag add", @board.all_spaces[0][2].is_marked_by.symbol]
     end
 
     if @board.all_spaces[0][0].is_marked? && # test the subtractive diagonal win
@@ -53,7 +53,7 @@ class Game
           @board.all_spaces[1][1].is_marked_by.symbol) &&
          (@board.all_spaces[1][1].is_marked_by.symbol ==
           @board.all_spaces[2][2].is_marked_by.symbol)
-      return [true, "win", "diagsub", @board.all_spaces[0][0].is_marked_by.symbol]
+      return [true, "win", "diag sub", @board.all_spaces[0][0].is_marked_by.symbol]
     end
 
     for x_coord in 0..2 do
@@ -64,7 +64,7 @@ class Game
       end
     end
 
-    return [true, "draw", "", ""]
+    return [true, "Draw", "", ""]
 
   end
 
