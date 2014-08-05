@@ -119,6 +119,43 @@ describe Game do
     expect(test_game.game_over?).to eq [true, "win", "diagsub", test_player.symbol]
   end
 
+  it "knows if the game is a draw" do
+    test_game = Game.new
+    test_player1 = Player.new({:name => 'Cindy'})
+    test_player2 = Player.new({:name => 'Amy'})
+    test_player1.add_symbol({:symbol=>'X'})
+    test_player2.add_symbol({:symbol=>'O'})
+    test_game.add_player(test_player1)
+    test_game.add_player(test_player2)
+    test_game.board.all_spaces[0][0].marked_by(test_player1)
+    test_game.board.all_spaces[0][2].marked_by(test_player2)
+    test_game.board.all_spaces[0][1].marked_by(test_player1)
+    test_game.board.all_spaces[1][0].marked_by(test_player2)
+    test_game.board.all_spaces[1][2].marked_by(test_player1)
+    test_game.board.all_spaces[1][1].marked_by(test_player2)
+    test_game.board.all_spaces[2][0].marked_by(test_player1)
+    test_game.board.all_spaces[2][1].marked_by(test_player2)
+    test_game.board.all_spaces[2][2].marked_by(test_player1)
+    expect(test_game.game_over?).to eq [true, "draw", "", ""]
+  end
 
+   it "knows if the game is not over" do
+    test_game = Game.new
+    test_player1 = Player.new({:name => 'Cindy'})
+    test_player2 = Player.new({:name => 'Amy'})
+    test_player1.add_symbol({:symbol=>'X'})
+    test_player2.add_symbol({:symbol=>'O'})
+    test_game.add_player(test_player1)
+    test_game.add_player(test_player2)
+    test_game.board.all_spaces[0][0].marked_by(test_player1)
+    test_game.board.all_spaces[0][2].marked_by(test_player2)
+    test_game.board.all_spaces[0][1].marked_by(test_player1)
+    test_game.board.all_spaces[1][0].marked_by(test_player2)
+    test_game.board.all_spaces[1][2].marked_by(test_player1)
+    test_game.board.all_spaces[1][1].marked_by(test_player2)
+    test_game.board.all_spaces[2][0].marked_by(test_player1)
+    test_game.board.all_spaces[2][1].marked_by(test_player2)
+    expect(test_game.game_over?).to eq [false, "", "", ""]
+  end
 
 end

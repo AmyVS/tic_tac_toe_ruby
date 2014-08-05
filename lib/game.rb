@@ -56,7 +56,15 @@ class Game
       return [true, "win", "diagsub", @board.all_spaces[0][0].is_marked_by.symbol]
     end
 
-    return false
+    for x_coord in 0..2 do
+      for y_coord in 0..2 do
+        if !@board.all_spaces[x_coord][y_coord].is_marked?
+          return [false, "", "", ""]
+        end
+      end
+    end
+
+    return [true, "draw", "", ""]
 
   end
 
