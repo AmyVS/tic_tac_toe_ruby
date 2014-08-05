@@ -49,4 +49,14 @@ describe Game do
     expect(test_game.board.all_spaces[0][0].x_coordinate).to eq test_board.all_spaces[0][0].x_coordinate
     expect(test_game.board.all_spaces[0][0].y_coordinate).to eq test_board.all_spaces[0][0].y_coordinate
   end
+
+  it "assigns 2 players to each game" do
+    test_player1 = Player.new({:name => 'Cindy'})
+    test_player2 = Player.new({:name => 'Amy'})
+    test_game = Game.new
+    test_game.add_player(test_player1)
+    test_game.add_player(test_player2)
+    expect(test_game.players[0].name).to eq "Cindy"
+    expect(test_game.players[1].name).to eq "Amy"
+  end
 end

@@ -6,7 +6,8 @@ class Game
     @board = Board.new
   end
 
-  # def add_player
-  # end
+  def add_player(player)
+    @players << player
+  end
 
 end
