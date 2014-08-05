@@ -6,8 +6,18 @@ require 'player'
 
 describe Player do
   it 'is initialized with a name' do
-    test_player = Player.new({:name => 'Jane Smith'})
+    test_player = Player.new({:name => 'Cindy'})
     expect(test_player).to be_an_instance_of Player
+    expect(test_player.name).to eq "Cindy"
+  end
+
+  it 'assigns a symbol to each player' do
+    test_player1 = Player.new({:name => 'Cindy'})
+    test_player2 = Player.new({:name => 'Amy'})
+    expect(test_player1.name).to eq "Cindy"
+    expect(test_player1.add_symbol({:symbol=>'X'})).to eq 'X'
+    expect(test_player2.name).to eq "Amy"
+    expect(test_player2.add_symbol({:symbol=>'O'})).to eq 'O'
   end
 end
 
