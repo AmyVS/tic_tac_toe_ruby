@@ -45,7 +45,7 @@ describe Space do
     test_space.marked_by(test_player1)
     expect(test_space.player.name).to eq 'Cindy'
     expect(test_space.player.symbol).to eq 'X'
-    expect(test_space.isMarked?).to eq true
+    expect(test_space.is_marked?).to eq true
   end
 end
 
@@ -78,4 +78,25 @@ describe Game do
     expect(test_game.players[0].name).to eq "Cindy"
     expect(test_game.players[1].name).to eq "Amy"
   end
+
+  it 'knows when the game is over (row)' do
+    test_game = Game.new
+    test_player = Player.new({:name => 'Cindy'})
+    test_game.add_player(test_player)
+    test_game.board.all_spaces[0][0].marked_by(test_player)
+    test_game.board.all_spaces[0][1].marked_by(test_player)
+    test_game.board.all_spaces[0][2].marked_by(test_player)
+    expect(test_game.game_over?).to eq true
+  end
+
+  it "knows when the game is over (column)" do
+    test_game = Game.new
+    test_player = Player.new({:name => 'Cindy'})
+    test_game.add_player(test_player)
+    test_game.board.all_spaces[0][0].marked_by(test_player)
+    test_game.board.all_spaces[1][0].marked_by(test_player)
+    test_game.board.all_spaces[2][0].marked_by(test_player)
+    expect(test_game.game_over?).to eq true
+  end
+
 end
