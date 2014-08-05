@@ -28,6 +28,15 @@ describe Space do
     expect(test_space.x_coordinate).to eq 0
     expect(test_space.y_coordinate).to eq 0
   end
+
+  it 'is marked by a player' do
+    test_player1 = Player.new({:name => 'Cindy'})
+    test_player1.add_symbol({:symbol=>'X'})
+    test_space = Space.new({:x_coordinate=>0,:y_coordinate=>0})
+    test_space.marked_by(test_player1)
+    expect(test_space.player.name).to eq 'Cindy'
+    expect(test_space.player.symbol).to eq 'X'
+  end
 end
 
 describe Board do
