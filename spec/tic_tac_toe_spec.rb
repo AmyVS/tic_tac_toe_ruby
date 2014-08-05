@@ -86,7 +86,7 @@ describe Game do
     test_game.board.all_spaces[0][0].marked_by(test_player)
     test_game.board.all_spaces[0][1].marked_by(test_player)
     test_game.board.all_spaces[0][2].marked_by(test_player)
-    expect(test_game.game_over?).to eq true
+    expect(test_game.game_over?).to eq [true, "win", "row0", test_player.symbol]
   end
 
   it "knows when the game is over (column)" do
@@ -96,7 +96,29 @@ describe Game do
     test_game.board.all_spaces[0][0].marked_by(test_player)
     test_game.board.all_spaces[1][0].marked_by(test_player)
     test_game.board.all_spaces[2][0].marked_by(test_player)
-    expect(test_game.game_over?).to eq true
+    expect(test_game.game_over?).to eq [true, "win", "col0", test_player.symbol]
   end
+
+  it "knows when the game is over (additive diagonal)" do
+    test_game = Game.new
+    test_player = Player.new({:name => 'Cindy'})
+    test_game.add_player(test_player)
+    test_game.board.all_spaces[2][0].marked_by(test_player)
+    test_game.board.all_spaces[1][1].marked_by(test_player)
+    test_game.board.all_spaces[0][2].marked_by(test_player)
+    expect(test_game.game_over?).to eq [true, "win", "diagadd", test_player.symbol]
+  end
+
+  it "knows when the game is over (subtractive diagonal)" do
+    test_game = Game.new
+    test_player = Player.new({:name => 'Cindy'})
+    test_game.add_player(test_player)
+    test_game.board.all_spaces[0][0].marked_by(test_player)
+    test_game.board.all_spaces[1][1].marked_by(test_player)
+    test_game.board.all_spaces[2][2].marked_by(test_player)
+    expect(test_game.game_over?).to eq [true, "win", "diagsub", test_player.symbol]
+  end
+
+
 
 end
