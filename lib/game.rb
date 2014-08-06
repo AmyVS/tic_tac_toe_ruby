@@ -32,7 +32,7 @@ class Game
           @board.all_spaces[1][y_coord].is_marked_by.symbol) &&
          (@board.all_spaces[1][y_coord].is_marked_by.symbol ==
           @board.all_spaces[2][y_coord].is_marked_by.symbol)
-        return [true, "win", "col " + y_coord+1.to_s, @board.all_spaces[2][y_coord].is_marked_by.symbol]
+        return [true, "win", "col " + (y_coord+1).to_s, @board.all_spaces[2][y_coord].is_marked_by.symbol]
       end
     end
 
